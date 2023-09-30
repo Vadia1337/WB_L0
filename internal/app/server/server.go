@@ -111,6 +111,7 @@ func (s *Server) tryConnectToNats() {
 	if err != nil {
 		log.Print(err)
 		s.tryConnectToNats()
+		return
 	}
 	s.nats = nats
 
