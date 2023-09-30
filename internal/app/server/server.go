@@ -6,7 +6,6 @@ import (
 	"WB_L0/internal/app/store/pgstore"
 	"context"
 	"database/sql"
-	"encoding/json"
 	"fmt"
 	"github.com/nats-io/stan.go"
 	"html/template"
@@ -39,15 +38,6 @@ func (s *Server) Start() {
 	s.tryConnectToNats()
 
 	s.initWebServer()
-
-	//doneCh := make(chan bool)
-	//go func() {
-	//	sigCh := make(chan os.Signal, 1)
-	//	signal.Notify(sigCh, os.Interrupt)
-	//	<-sigCh
-	//	doneCh <- true
-	//}()
-	//<-doneCh
 }
 
 func (s *Server) newDB() {
@@ -211,14 +201,14 @@ func (s *Server) HandleOrder() http.HandlerFunc {
 		}
 		// отдаем в json для тестов, можно еще внутри метода cache.Get
 		// убрать Unmarshal
-		orderJson, _ := json.Marshal(order)
-		w.Write(orderJson)
+		//orderJson, _ := json.Marshal(order)
+		//w.Write(orderJson)
 
-		//tmpl, _ := template.ParseFiles("web/order.html")
-		//err = tmpl.Execute(w, order)
-		//if err != nil {
-		//	log.Print(err)
-		//}
+		tmpl, _ := template.ParseFiles("web/order.html")
+		err = tmpl.Execute(w, order)
+		if err != nil {
+			log.Print(err)
+		}
 	}
 }
 
