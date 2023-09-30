@@ -1,0 +1,13 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>{{ .Title}}</title>
+</head>
+<body>
+    <form action="/order"
+          method="post" enctype="application/x-www-form-urlencoded">
+        <input type="text" name="uid" placeholder="Введите uid заказа"/>
+        <input type="submit"/>
+    </form>
+</body>
+</html>

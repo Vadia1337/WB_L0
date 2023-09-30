@@ -1,0 +1,10 @@
+#store
+database_url = "host=localhost port=5433 user=MainUser password=12345L dbname=L0 sslmode=disable"
+
+#nats
+nats_url = "nats://localhost:4222"
+cluster_id = "test-cluster"
+client_id = "test-client"
+
+#redis
+redis_ip = "localhost:6379"
